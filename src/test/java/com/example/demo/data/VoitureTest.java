@@ -1,28 +1,32 @@
 package com.example.demo.data;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
 
-@SpringBootTest
+import static org.junit.jupiter.api.Assertions.*;
+
 public class VoitureTest {
 
-    @BeforeAll
-    void creerVoiture(){
-        Voiture voiture1= new Voiture("Volkswagen",3800);
-        voiture1.setId(1);
-        Voiture voiture2= new Voiture("Ferrari",18000);
-        voiture2.setId(2);
-        }
-    @Test
-    void TestVoiture(){
-        Assert.isTrue(voiture1.getPrix() ==3800,"Doit être 3800");
-        Assert.isTrue(voiture1.getMarque().equals("Volkswagen"),"Doit être Volkswagen");
-        Assert.isTrue(voiture1.getId().equals(1));
-        Assert.isTrue(voiture2.getPrix() ==18000,"Doit être 18000");
-        Assert.isTrue(voiture2.getMarque()== "Ferrari","Doit être Volkswagen");
-        Assert.isFalse(voiture1.getId().equals(1));
+    private static Voiture voiture1;
+    private static Voiture voiture2;
 
+    @BeforeAll
+    static void creerVoiture() {
+        voiture1 = new Voiture("Volkswagen", 3800);
+        voiture1.setId(1);
+
+        voiture2 = new Voiture("Ferrari", 18000);
+        voiture2.setId(2);
     }
 
+    @Test
+    void testVoiture() {
+        assertEquals(3800, voiture1.getPrix());
+        assertEquals("Volkswagen", voiture1.getMarque());
+        assertEquals(1, voiture1.getId());
+
+        assertEquals(18000, voiture2.getPrix());
+        assertEquals("Ferrari", voiture2.getMarque());
+        assertEquals(2, voiture2.getId());
+    }
 }
