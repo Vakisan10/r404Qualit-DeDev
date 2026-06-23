@@ -1,9 +1,15 @@
 package com.example.demo.data;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Voiture {
 
     String marque;
     int prix;
+
+    @Id
     int id;
 
     public Voiture(){
