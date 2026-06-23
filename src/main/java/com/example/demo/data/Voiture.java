@@ -1,9 +1,15 @@
 package com.example.demo.data;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Voiture {
 
     String marque;
     int prix;
+
+    @Id
     int id;
 
     public Voiture(){
